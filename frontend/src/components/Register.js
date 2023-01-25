@@ -66,6 +66,7 @@ const Register = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              type="password"
               value={password}
             />
             <label>Password</label>

@@ -3,24 +3,28 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [userID, setUserID] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const authSuccess = () => {
-    // console.log("here2");
     console.log("you've logged in");
+
     if (user.loggedIn) return;
     setUser({ loggedIn: true });
 
-    if (location.state?.from) {
-      navigate(location.state.from);
-    }
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
+    // if (location.state?.from) {
+    //   navigate(location.state.from);
+    // }
   };
 
   const handleSubmit = async (e) => {
@@ -33,9 +37,10 @@ const Login = () => {
           password,
         })
         .then((response) => {
+          // console.log(response.data);
+          // setUserID(response.data);
           authSuccess();
-          console.log(response.data);
-          navigate(`/cart/${response.data}`);
+          navigate(`/`);
         });
     } catch (error) {
       // console.log("here1");
@@ -66,6 +71,7 @@ const Login = () => {
                 setPassword(e.target.value);
                 console.log(e.target.value);
               }}
+              type="password"
               value={password}
             />
             <label>Password</label>

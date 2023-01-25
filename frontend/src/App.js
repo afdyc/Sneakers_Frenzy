@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import Navbar from "./components/Navbar";
 import View from "./View";
 
 export const UserContext = createContext();
@@ -8,6 +9,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
+      <Navbar />
       <View />
     </UserContext.Provider>
   );
