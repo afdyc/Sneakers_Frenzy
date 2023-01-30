@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Product from "./components/Product";
 import Register from "./components/Register";
+import ThankYou from "./components/ThankYou";
 import ProtectedRoute from "./ProtectedRoute";
 
 const View = () => {
@@ -21,6 +22,7 @@ const View = () => {
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/login/cart" element={<Cart />} />
+              <Route path="/login/cart/thankyou" element={<ThankYou />} />
             </Route>
           </Routes>
         </div>

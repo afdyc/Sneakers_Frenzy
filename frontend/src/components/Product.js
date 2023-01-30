@@ -26,7 +26,7 @@ const Product = () => {
   };
 
   return (
-    <section>
+    <section className="w-full h-screen px-[40px] pt-[80px] md:pt-[250px]">
       <div>
         {filteredOneShoe.map((getProduct) => {
           /* console.log(getProduct); */
